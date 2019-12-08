@@ -6,5 +6,9 @@ Feature: Sign in
   Scenario: Sign in into account
     Given I am not logged in
 
-    When  I click on log in button
+    When  I click on sign in button
     Then I see a login form opened
+
+    When I fill in login form with valid credentials
+    And Click log in button
+    Then I become a logged in user
