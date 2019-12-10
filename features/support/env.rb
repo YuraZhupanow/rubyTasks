@@ -1,5 +1,8 @@
 require 'capybara/cucumber'
 require 'selenium-webdriver'
+require 'site_prism'
+require 'require_all'
+
 
 def options
 

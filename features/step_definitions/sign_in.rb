@@ -1,5 +1,7 @@
 Given(/^I am not logged in$/) do
-  visit 'http://192.168.31.110/'
+  @home_page = Home.new
+  @home_page.load
+  # visit 'http://192.168.31.110/'
 end
 
 When(/^I click on sign in button$/) do
