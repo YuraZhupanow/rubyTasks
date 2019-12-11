@@ -3,6 +3,8 @@ require 'selenium-webdriver'
 require 'site_prism'
 require 'require_all'
 
+require_all 'page_object/sections'
+require_all 'page_object/pages'
 
 def options
 

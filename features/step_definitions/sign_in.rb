@@ -5,24 +5,32 @@ Given(/^I am not logged in$/) do
 end
 
 When(/^I click on sign in button$/) do
-  find(:xpath, '//*[@id="account"]/ul/li[1]/a').click
+  @home_page.top_menu.sign_in_link.click
+  #@home_page.sign_in_link.click
+  #find(:xpath, '//*[@id="account"]/ul/li[1]/a').click
 end
 
 
 Then(/^I see a login form opened$/) do
-  expect(current_url).to include '/login'
-  expect(page).to have_content 'Login'
-  expect(page).to have_content 'Password'
+  @sign_in = LoginPage.new
+  expect(@sign_in).to have_username_field
+  expect(@sign_in).to have_password_field
+  #expect(current_url).to include '/login'
+  #expect(page).to have_content 'Login'
+  #expect(page).to have_content 'Password'
 end
 
 
 When(/^I fill in login form with valid credentials$/) do
-  find('#username').set 'user'
-  find('#password').set 'gvdQWBf2IFYM'
+  @sign_in.username_field.set 'user'
+  @sign_in.password_field.set 'gvdQWBf2IFYM'
+  #find('#username_field').set 'user'
+  #find('#password_field').set 'gvdQWBf2IFYM'
 end
 
 And(/^Click log in button$/) do
-  find('#login-submit').click
+  @sign_in.login_submit_button.click
+  #find('#login-submit').click
 end
 
 Then(/^I become a logged in user$/) do
