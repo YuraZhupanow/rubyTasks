@@ -5,6 +5,7 @@ require 'require_all'
 
 require_all 'page_object/sections'
 require_all 'page_object/pages'
+require_relative 'feature_helper'
 
 def options
 
@@ -17,3 +18,5 @@ Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 
 end
+
+World(FeatureHelper)

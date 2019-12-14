@@ -28,3 +28,15 @@ Then(/^I become a logged in user$/) do
   expect(page).to have_content 'Logged in as user'
 end
 
+
+Given(/^Registration page is opened and filled in with user info$/) do
+  pending
+end
+
+When(/^I click on Submit button$/) do
+  pending
+end
+
+Then(/^I become registered in user$/) do
+  pending
+end
