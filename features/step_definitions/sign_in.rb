@@ -29,14 +29,17 @@ Then(/^I become a logged in user$/) do
 end
 
 
-Given(/^Registration page is opened and filled in with user info$/) do
-  pending
+Given(/^Registration page is opened and filled in with info about "([^"]*)"$/) do |user|
+  @unique = rand.to_s.slice(2, 7)
+  @user_name = user
+  @user_name += @unique
+  user_registration @user_name, 'test12345'
 end
 
 When(/^I click on Submit button$/) do
-  pending
+  find(:xpath, '//*[@id="new_user"]/input[3]').click
 end
 
 Then(/^I become registered in user$/) do
-  pending
+  expect(page).to have_content 'Logged in as ' + @user_name
 end
