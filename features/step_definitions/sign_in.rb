@@ -30,16 +30,26 @@ end
 
 
 Given(/^Registration page is opened and filled in with info about "([^"]*)"$/) do |user|
-  @unique = rand.to_s.slice(2, 7)
-  @user_name = user
-  @user_name += @unique
+  @user_name = user + rand.to_s.slice(2, 7)
   user_registration @user_name, 'test12345'
+  save_username @user_name
 end
 
 When(/^I click on Submit button$/) do
   find(:xpath, '//*[@id="new_user"]/input[3]').click
 end
 
-Then(/^I become registered in user$/) do
+Then(/^I become registered in user and logout$/) do
   expect(page).to have_content 'Logged in as ' + @user_name
+  find('.logout').click
+
+end
+
+Given(/^Registration page is opened and filled in with info about previous user$/) do
+  @user_name = receive_used_username
+  user_registration @user_name, 'test12345'
+end
+
+Then(/^I get an error message$/) do
+  expect(page).to have_content 'Login has already been taken'
 end

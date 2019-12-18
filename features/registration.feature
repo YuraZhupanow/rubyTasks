@@ -7,4 +7,11 @@ Feature: Register in
     Given Registration page is opened and filled in with info about "user"
 
     When I click on Submit button
-    Then I become registered in user
+    Then I become registered in user and logout
+
+  Scenario: Register user with the same username
+    Given Registration page is opened and filled in with info about previous user
+
+    When I click on Submit button
+    Then I get an error message
+
