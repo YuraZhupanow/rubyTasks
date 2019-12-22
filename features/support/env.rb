@@ -1,6 +1,7 @@
 require 'capybara/cucumber'
 require 'selenium-webdriver'
 require 'site_prism'
+require 'json'
 require 'require_all'
 
 require_all 'page_object/sections'

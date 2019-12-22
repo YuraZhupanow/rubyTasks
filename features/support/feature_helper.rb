@@ -12,12 +12,19 @@ module FeatureHelper
   end
 
   def save_username(user_name)
-    $names = []
-    $names.push(user_name)
+    @tempHash = {:name => user_name}
+    File.open('jsonfiles/saved_users', "w") do |f|
+      f.write(@tempHash.to_json)
+    end
+    # $names = []
+    #$names.push(user_name)
   end
 
   def receive_used_username
-    $names[0]
+    @file = File.read('jsonfiles/saved_users')
+    @data_hash = JSON.parse(@file)
+    @data_hash['name']
+#    $names[0]
   end
 
 end
